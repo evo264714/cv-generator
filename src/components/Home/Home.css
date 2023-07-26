@@ -1,0 +1,51 @@
+ /* CSS styles for the container */
+ .container {
+    display: flex;
+}
+
+/* CSS styles for the left side */
+.left-side {
+    flex: 1;
+    padding: 20px;
+}
+
+.button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #4CAF50;
+    border-radius: 12px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+/* CSS styles for the bold text */
+.bold-text {
+    font-weight: bold;
+}
+
+/* CSS styles for the right side */
+.right-side {
+    flex: 1;
+}
+
+/* CSS styles for the big picture */
+.big-picture {
+    width: 100%;
+}
+
+p.ex2 {
+    font-size: 30px;
+}
+
+p.ex1 {
+    font-size: 60px;
+}
+
+p.ex3 {
+    font-size: 22px;
+}
