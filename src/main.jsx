@@ -10,6 +10,8 @@ import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import Home from './components/Home/Home';
 import CreateCV from './components/CreateCV/CreateCV';
+import AuthProvider from './components/Providers/AuthProvider';
+import PrivateRoute from './components/routes/PrivateRoutes';
 
 const router = createBrowserRouter([
   {
@@ -30,7 +32,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/generator',
-        element: <CreateCV></CreateCV>
+        element: <PrivateRoute><CreateCV></CreateCV></PrivateRoute>
       }
     ]
   },
@@ -38,6 +40,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>,
 )

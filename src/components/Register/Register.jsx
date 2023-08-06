@@ -1,7 +1,7 @@
-import { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { updateProfile } from 'firebase/auth';
-import { AuthContext } from '../Providers/AuthProvider';
+import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
+import { updateProfile } from "firebase/auth";
+import { AuthContext } from "../Providers/AuthProvider";
 
 const Register = () => {
 
@@ -9,7 +9,7 @@ const Register = () => {
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
 
-    const handleRegister = event =>{
+    const handleRegistration = event => {
         event.preventDefault();
         setSuccess('')
         const form = event.target;
@@ -18,81 +18,94 @@ const Register = () => {
         const password = form.password.value;
         const photo = form.photo.value;
         console.log(name, email, password, photo);
-        createUser(email, password)
-        .then(result =>{
-            const createdUser = result.user;
-            console.log(createdUser);
-            updateProfile(auth.currentUser, {
-                displayName: name, photoURL: photo
-            }).then(() =>{
 
-            }).catch(error => {
+        createUser(email, password) 
+        .then(result =>{
+            const user = result.user;
+            console.log(user);
+            updateProfile(auth.currentUser,{
+                displayName: name, photoURL: photo
+            })
+            .then(() =>{
+                
+            })
+            .catch(error =>{
                 console.log(error);
             })
             setError('')
             form.reset();
-            setSuccess('Successfully Registered');
+            setSuccess('Successfully Registered')
         })
         .catch(error =>{
             setError(error.message);
-
         })
     }
-
     return (
-        <form onSubmit={handleRegister}>
-            <div className="hero min-h-screen bg-base-200">
-                <div className="hero-content flex-col lg:flex-row-reverse">
-                    <div className="text-center lg:text-left">
-                        <h1 className="text-5xl font-bold">Register Here!</h1>
-
-                    </div>
-                    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                        <div className="card-body">
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Name</span>
-                                </label>
-                                <input type="text" placeholder="Name" name="name" className="input input-bordered" />
-                            </div>
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Photo URL</span>
-                                </label>
-                                <input type="text" placeholder="URL" name="photo" className="input input-bordered" />
-                            </div>
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Email</span>
-                                </label>
-                                <input type="email" placeholder="email" name='email' required className="input input-bordered" />
-                            </div>
-
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Password</span>
-                                </label>
-                                <input type="password" placeholder="password" name='password' required className="input input-bordered" />
-                                <label>
-                                    <span className='text-red-500'>{error}</span>
-                                    <span className='text-green-500'>{success}</span>
-                                </label>
-                                <label className="label">
-                                    <span>Already Have an Account? Please <Link to='/login' className="underline decoration-solid">Login</Link></span>
-                                </label>
-                            </div>
-                            <div className="form-control mt-6">
-                                <button className="btn btn-accent">Register</button>
-                            </div>
+        <div className="flex items-center justify-center h-screen">
+            <div className="flex-1">
+                <div className="max-w-md mx-auto bg-white rounded-lg shadow-lg p-8">
+                    <h2 className="text-3xl font-semibold mb-4">Registration</h2>
+                    <form onSubmit={handleRegistration}>
+                        <div className="mb-4">
+                            <label htmlFor="name" className="block text-gray-700">Name</label>
+                            <input
+                                type="text"
+                                name="name"
+                                id="name"
+                                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-blue-300"
+                                placeholder="Enter your name"
+                            />
                         </div>
-                    </div>
+                        <div className="mb-4">
+                            <label htmlFor="email" className="block text-gray-700">Email</label>
+                            <input
+                                type="email"
+                                name="email"
+                                id="email"
+                                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-blue-300"
+                                placeholder="Enter your email"
+                            />
+                        </div>
+                        <div className="mb-4">
+                            <label htmlFor="password" className="block text-gray-700">Password</label>
+                            <input
+                                type="password"
+                                name="password"
+                                id="password"
+                                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-blue-300"
+                                placeholder="Enter your password"
+                            />
+                        </div>
+                        <div className="mb-4">
+                            <label htmlFor="photoUrl" className="block text-gray-700">Photo URL</label>
+                            <input
+                                type="text"
+                                name="photo"
+                                id="photoUrl"
+                                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-blue-300"
+                                placeholder="Enter your photo URL"
+                            />
+                        </div>
+                        <input
+                            type="submit"
+                            value='Register'
+                            className="w-full py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+                        />
+                        
+                        <label>
+                            <span className="text-red-600">{error}</span>
+                            <span className="text-green-600">{success}</span>
+                        </label>
+
+                        <p className="mt-4">Already Have An Account? Please Login
+
+                            <Link className="underline" to='/login'> Here</Link>
+                        </p>
+                    </form>
                 </div>
             </div>
-        </form>
+        </div>
     );
 };
 
 export default Register;
-
-
-

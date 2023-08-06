@@ -33,15 +33,16 @@ const Navbar = () => {
                 </NavLink>
 
                 <NavLink className='me-6'
-                    to="/register"
+                    to="/generator"
                     style={({ isActive }) => {
                         return {
                             fontWeight: isActive ? "bold" : "",
                         };
                     }}
                 >
-                    Register
+                    Create Your CV
                 </NavLink>
+                
 
             </nav>
             <div className='flex w-36 justify-between items-center'>
@@ -51,10 +52,24 @@ const Navbar = () => {
 
                     <button onClick={handleLogOut} className="btn btn-primary">Logout</button> :
                     
-                        <div className='flex gap-x-2'>
-                            <Link to='/login'><button className="btn btn-outline btn-accent">Login</button></Link>
-                            <Link className="btn btn-outline btn-accent" to='/generator'>Create Your CV</Link>
-                        </div>
+                    <div className="flex items-center">
+                           
+                    {user ? (
+                        <button
+                            onClick={handleLogOut}
+                            className="btn btn-outline btn-success text-xl font-semibold mr-1"
+                        >
+                            Log Out
+                        </button>
+                    ) : (
+                        <Link to="/login">
+                            <button className="btn btn-outline btn-success text-xl font-semibold">Login</button>
+                        </Link>
+                    )}
+                     {user && (
+                        <img className="w-10 rounded-full mr-2" title={user?.displayName} src={user?.photoURL} alt="" />
+                    )}
+                </div>
                     
 
                 }
