@@ -18,7 +18,7 @@ const Navbar = () => {
 
     return (
         <div className='sm:w-full w-full md:flex items-center justify-around p-6' style={headerStyle}>
-            <h2 className='text-7xl font-bold text-white'>CV Generator</h2>
+            <NavLink to="/" className='text-7xl font-bold text-white'>CV Generator</NavLink>
 
             <nav>
                 <NavLink className='me-6'
@@ -42,7 +42,39 @@ const Navbar = () => {
                 >
                     Create Your CV
                 </NavLink>
-                
+                {!user ? <NavLink className='me-6'
+                    to="/register"
+                    style={({ isActive }) => {
+                        return {
+                            fontWeight: isActive ? "bold" : "",
+                        };
+                    }}
+                >
+                    Register
+                </NavLink> : ""}
+                {user ? <NavLink className='me-6'
+                    to="/"
+                    style={({ isActive }) => {
+                        return {
+                            fontWeight: isActive ? "" : "",
+                        };
+                    }}
+                >
+                    My Documents
+                </NavLink> : ''}
+
+                {user ? <NavLink className='me-6'
+                    to="/"
+                    style={({ isActive }) => {
+                        return {
+                            fontWeight: isActive ? "" : "",
+                        };
+                    }}
+                >
+                    My Account
+                </NavLink> : ''}
+
+
 
             </nav>
             <div className='flex w-36 justify-between items-center'>
@@ -51,26 +83,26 @@ const Navbar = () => {
                 {user ?
 
                     <button onClick={handleLogOut} className="btn btn-primary">Logout</button> :
-                    
+
                     <div className="flex items-center">
-                           
-                    {user ? (
-                        <button
-                            onClick={handleLogOut}
-                            className="btn btn-outline btn-success text-xl font-semibold mr-1"
-                        >
-                            Log Out
-                        </button>
-                    ) : (
-                        <Link to="/login">
-                            <button className="btn btn-outline btn-success text-xl font-semibold">Login</button>
-                        </Link>
-                    )}
-                     {user && (
-                        <img className="w-10 rounded-full mr-2" title={user?.displayName} src={user?.photoURL} alt="" />
-                    )}
-                </div>
-                    
+
+                        {user ? (
+                            <button
+                                onClick={handleLogOut}
+                                className="btn btn-outline btn-success text-xl font-semibold mr-1"
+                            >
+                                Log Out
+                            </button>
+                        ) : (
+                            <Link to="/login">
+                                <button className="btn btn-outline btn-accent text-xl font-semibold">Login</button>
+                            </Link>
+                        )}
+                        {user && (
+                            <img className="w-10 rounded-full mr-2" title={user?.displayName} src={user?.photoURL} alt="" />
+                        )}
+                    </div>
+
 
                 }
 

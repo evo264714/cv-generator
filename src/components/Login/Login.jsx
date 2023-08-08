@@ -70,11 +70,11 @@ const Login = () => {
                         <input
                             type="submit"
                             value="Login"
-                            className="w-full py-2 mb-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600 "
+                            className="w-full py-2 mb-4 bg-accent text-white rounded-lg hover:bg-success"
                         />
                        
                     </form>
-                    <button onClick={handleGoogleSignIn} className="w-full py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Login With Google</button>
+                    <button onClick={handleGoogleSignIn} className="w-full py-2 bg-accent text-white rounded-lg hover:bg-success">Login With Google</button>
                     <p className="mt-4">New to Play Land? Sign Up <Link 
                         
                         to='/register'
