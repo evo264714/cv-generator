@@ -1,13 +1,9 @@
 
-import { FaUserAlt, FaPhoneAlt, FaHome, FaFilePdf } from "react-icons/fa";
+import { FaUserAlt, FaPhoneAlt, FaHome } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import DownloadPDFButton from "../DownloadPDFButton/DownloadPDFButton";
 
 const CvTemplateCard = ({ cv }) => {
-
-
-
-
     const { name, objectives, photo, email, phone, address, skills, education, certification, languages, internship, hobby, description } = cv
     return (
 
@@ -53,7 +49,7 @@ const CvTemplateCard = ({ cv }) => {
                         <p>{description}</p>
                     </div>
                 </div>
-                <FaFilePdf/><DownloadPDFButton className='btn btn-success'></DownloadPDFButton>
+                <DownloadPDFButton className='btn btn-success'></DownloadPDFButton>
             
         </div>
 
