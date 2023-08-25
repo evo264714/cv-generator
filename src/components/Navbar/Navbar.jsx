@@ -64,14 +64,14 @@ const Navbar = () => {
                 </NavLink> : ''}
 
                 {user ? <NavLink className='me-6'
-                    to="/"
+                    to="/templates"
                     style={({ isActive }) => {
                         return {
-                            fontWeight: isActive ? "" : "",
+                            fontWeight: isActive ? "bold" : "",
                         };
                     }}
                 >
-                    My Account
+                    My CVs
                 </NavLink> : ''}
 
 

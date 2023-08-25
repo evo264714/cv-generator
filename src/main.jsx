@@ -12,6 +12,7 @@ import Home from './components/Home/Home';
 import CreateCV from './components/CreateCV/CreateCV';
 import AuthProvider from './components/Providers/AuthProvider';
 import PrivateRoute from './components/routes/PrivateRoutes';
+import CvTemplate from './components/CvTemplate/CvTemplate';
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,11 @@ const router = createBrowserRouter([
       {
         path: '/generator',
         element: <PrivateRoute><CreateCV></CreateCV></PrivateRoute>
+      },
+      {
+        path: '/templates',
+        element: <CvTemplate></CvTemplate>,
+        loader: () => fetch('http://localhost:2000/cv')
       }
     ]
   },
