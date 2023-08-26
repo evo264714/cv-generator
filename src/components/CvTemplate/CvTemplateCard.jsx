@@ -6,11 +6,13 @@ import DownloadPDFButton from "../DownloadPDFButton/DownloadPDFButton";
 const CvTemplateCard = ({ cv }) => {
     const { name, objectives, photo, email, phone, address, skills, education, certification, languages, internship, hobby, description } = cv
     return (
+        <>
 
-        <div className="my-10 mx-10 grid grid-cols-2 shadow-lg shadow-slate-500 py-8 px-8 rounded pdf-content">
-        
-           
-            
+
+            <div className="my-10 mx-10 grid grid-cols-2 shadow-lg shadow-slate-500 py-8 px-8 rounded pdf-content">
+
+                
+
                 <div className="bg-red-400 w-96 px-4 py-8 rounded-lg">
                     <div className="">
                         <img className="rounded-full w-1/2 mx-auto my-5" src={photo ? photo : <p>No Photos Available</p>} alt="" />
@@ -49,10 +51,13 @@ const CvTemplateCard = ({ cv }) => {
                         <p>{description}</p>
                     </div>
                 </div>
-                <DownloadPDFButton className='btn btn-success'></DownloadPDFButton>
-            
-        </div>
 
+                <div className="my-4 ">
+                <DownloadPDFButton></DownloadPDFButton>
+                </div>
+            </div>
+
+        </>
 
     );
 };

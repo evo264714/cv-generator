@@ -24,7 +24,7 @@ const DownloadPDFButton = () => {
 
   return (
     <button
-      className="btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex items-center"
+      className="btn btn-success text-white font-bold py-2 px-4 rounded flex items-center"
       onClick={handleDownload}
     >
       <FaFilePdf/>Download PDF
