@@ -2,7 +2,7 @@
 import { useForm, Controller } from 'react-hook-form';
 import Swal from 'sweetalert2';
 const CreateCV = () => {
-    const { handleSubmit, control, formState: { errors } } = useForm();
+    const { handleSubmit, control, formState: { errors }, reset } = useForm();
 
     const onSubmit = (data) => {
 
@@ -25,6 +25,7 @@ const CreateCV = () => {
                     confirmButtonText: 'Okay!'
                 })
             }
+            reset()
         })
 
         

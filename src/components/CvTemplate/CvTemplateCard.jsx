@@ -7,8 +7,6 @@ const CvTemplateCard = ({ cv }) => {
     const { name, objectives, photo, email, phone, address, skills, education, certification, languages, internship, hobby, description } = cv
     return (
         <>
-
-
             <div className="my-10 mx-10 grid grid-cols-2 shadow-lg shadow-slate-500 py-8 px-8 rounded pdf-content">
 
                 
